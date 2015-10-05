@@ -1,0 +1,95 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.2
+date	2013.10.12.01.54.12;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.10.12.01.52.46;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@
+#include <string>
+#include <unordered_set>
+using namespace std;
+
+#include "stringset.h"
+
+typedef unordered_set<string> stringset;
+typedef stringset::const_iterator stringset_citor;
+typedef stringset::const_local_iterator stringset_bucket_citor;
+
+stringset set;
+
+const string* intern_stringset (const char* string) {
+   pair<stringset_citor,bool> handle = set.insert (string);
+   return &*handle.first;
+}
+
+void dump_stringset (FILE* out) {
+   size_t max_bucket_size = 0;
+   for (size_t bucket = 0; bucket < set.bucket_count();
+        ++bucket) {
+      bool need_index = true;
+      size_t curr_size = set.bucket_size (bucket);
+      if (max_bucket_size < curr_size)
+          max_bucket_size = curr_size;
+      for (stringset_bucket_citor itor = set.cbegin (bucket);
+           itor != set.cend (bucket); ++itor) {
+         if (need_index) fprintf (out, "string[%4lu]: ", bucket);
+                    else fprintf (out, "       %4s   ", "");
+         need_index = false;
+         const string* str = &*itor;
+         fprintf (out, "%22lu %p->\"%s\"\n",
+                  set.hash_function()(*str), str, str->c_str());
+      }
+   }
+   fprintf (out, "load_factor = %.3f\n", set.load_factor());
+   fprintf (out, "bucket_count = %lu\n", set.bucket_count());
+   fprintf (out, "max_bucket_size = %lu\n", max_bucket_size);
+}
+
+RCSC("$Id: stringset.cc,v 1.1 2013-10-11 18:52:46-07 - - $")
+@
+
+
+1.1
+log
+@-
+@
+text
+@d21 2
+a22 1
+   for (size_t bucket = 0; bucket < set.bucket_count(); ++bucket) {
+d25 2
+a26 1
+      if (max_bucket_size < curr_size) max_bucket_size = curr_size;
+d29 2
+a30 2
+         if (need_index) fprintf (out, "stringset[%4lu]: ", bucket);
+                    else fprintf (out, "          %4s   ", "");
+d33 2
+a34 2
+         fprintf (out, "%22lu %p->\"%s\"\n", set.hash_function()(*str),
+                  str, str->c_str());
+d42 1
+a42 1
+RCSC("$Id: stringset.cc,v 1.5 2013-09-23 14:37:15-07 - - $")
+@

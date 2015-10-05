@@ -1,0 +1,39 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@ * @;
+
+
+1.1
+date	2011.09.01.02.16.36;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id: macros.c,v 1.6 2011-08-30 18:14:49-07 - - $
+
+#include <assert.h>
+#include <stdio.h>
+
+int main (int argc, char **argv) {
+   printf ("%s: File \"%s\", line %d, function \"%s\"\n",
+           argv[0], __FILE__, __LINE__, __func__);
+   printf ("Compilation date \"%s\", time \"%s\"\n",
+           __DATE__, __TIME__);
+   return 0;
+}
+
+//TEST// runprog -x macros.lis macros
+//TEST// mkpspdf macros.ps macros.c macros.c.log macros.lis
+
+@

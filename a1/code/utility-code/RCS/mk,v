@@ -1,0 +1,54 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2013.10.12.01.53.00;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.09.25.01.43.23;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mk,v 1.1 2013-09-24 18:43:23-07 - - $
+FILES='astree.h    astree.cc
+       auxlib.h    auxlib.cc
+       lyutils.h   lyutils.cc
+       stringset.h stringset.cc 
+       parser.y'
+cid + $FILES
+mkpspdf -s12 Listing.ps $FILES
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 8
+a9 7
+# $Id: mk.asg2-code,v 1.1 2012-10-09 18:28:08-07 - - $
+mkpspdf Listing.ps \
+astree.h astree.cc \
+auxlib.h auxlib.cc \
+lyutils.h lyutils.cc \
+stringset.h stringset.cc \
+parser.y
+@

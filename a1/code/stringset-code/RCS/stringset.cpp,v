@@ -1,0 +1,207 @@
+head	1.8;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.8
+date	2015.03.26.02.03.01;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2014.10.09.22.09.33;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2014.10.08.00.39.41;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2014.10.08.00.37.02;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2014.10.08.00.35.07;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2014.10.08.00.33.17;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2014.10.04.01.47.35;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2014.10.04.01.45.23;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@-
+@
+text
+@// $Id: stringset.cpp,v 1.7 2014-10-09 15:09:33-07 - - $
+
+#include <unordered_set>
+using namespace std;
+
+#include "stringset.h"
+
+using stringset = unordered_set<string>;
+
+stringset set;
+
+const string* intern_stringset (const char* string) {
+   pair<stringset::const_iterator,bool> handle = set.insert (string);
+   return &*handle.first;
+}
+
+void dump_stringset (FILE* out) {
+   size_t max_bucket_size = 0;
+   for (size_t bucket = 0; bucket < set.bucket_count(); ++bucket) {
+      bool need_index = true;
+      size_t curr_size = set.bucket_size (bucket);
+      if (max_bucket_size < curr_size) max_bucket_size = curr_size;
+      for (stringset::const_local_iterator itor = set.cbegin (bucket);
+           itor != set.cend (bucket); ++itor) {
+         if (need_index) fprintf (out, "stringset[%4lu]: ", bucket);
+                    else fprintf (out, "          %4s   ", "");
+         need_index = false;
+         const string* str = &*itor;
+         fprintf (out, "%22lu %p->\"%s\"\n",
+                  set.hash_function()(*str),
+                  str, str->c_str());
+      }
+   }
+   fprintf (out, "load_factor = %.3f\n", set.load_factor());
+   fprintf (out, "bucket_count = %lu\n", set.bucket_count());
+   fprintf (out, "max_bucket_size = %lu\n", max_bucket_size);
+}
+
+@
+
+
+1.7
+log
+@-
+@
+text
+@d1 4
+a4 1
+// $Id: stringset.cpp,v 1.6 2014-10-07 17:39:41-07 - - $
+d29 1
+a29 1
+         fprintf (out, "%22lu %p->%p->\"%s\"\n",
+d31 1
+a31 1
+                  str, str->c_str(), str->c_str());
+@
+
+
+1.6
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id$
+a5 1
+using stringset_citor = stringset::const_iterator;
+d10 1
+a10 1
+   pair<stringset_citor,bool> handle = set.insert (string);
+d20 1
+a20 1
+      for (auto itor = set.cbegin (bucket);
+d26 3
+a28 2
+         fprintf (out, "%22lu %p->\"%s\"\n", set.hash_function()(*str),
+                  str, str->c_str());
+@
+
+
+1.5
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: stringset.cpp,v 1.4 2014-10-07 17:35:07-07 - - $
+d21 2
+a22 1
+      for (const string& str: set) {
+d26 3
+a28 2
+         fprintf (out, "%22lu %p->\"%s\"\n",
+                  set.hash_function()(str), &str, str.c_str());
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 5
+// $Id$
+
+#include <string>
+#include <unordered_set>
+using namespace std;
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d24 1
+a24 2
+      for (auto itor = set.cbegin (bucket);
+           itor != set.cend (bucket); ++itor) {
+d28 2
+a29 3
+         const string* str = &*itor;
+         fprintf (out, "%22lu %p->\"%s\"\n", set.hash_function()(*str),
+                  str, str->c_str());
+@
+
+
+1.1
+log
+@-
+@
+text
+@d8 2
+a9 2
+using stringset = unordered_set<string> stringset;
+using stringset_citor = stringset::const_iterator stringset_citor;
+@

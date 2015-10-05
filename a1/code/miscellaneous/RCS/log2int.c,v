@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@ * @;
+
+
+1.2
+date	2011.11.05.01.17.42;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2011.11.05.01.16.40;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@// $Id: log2int.c,v 1.1 2011-11-04 18:16:40-07 - - $
+
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int ilog2 (int n) {
+   int exp;
+   frexp ((double) n, &exp);
+   return exp;
+}
+
+int nums[] = {1, 10, 100, 1000, 10000};
+
+int main (int argc, char **argv) {
+   int dim = sizeof nums / sizeof *nums;
+   for (int i = 0; i < dim; ++i) {
+      printf ("ilog2 (%6d) = %3d\n", nums[i], ilog2 (nums[i]));
+   }
+   return EXIT_SUCCESS;
+}
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id$
+d7 1
+a7 1
+int log2 (int n) {
+d18 1
+a18 1
+      printf ("log2 (%6d) = %3d\n", nums[i], log2 (nums[i]));
+@
