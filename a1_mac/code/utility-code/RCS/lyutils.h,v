@@ -1,0 +1,138 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@ * @;
+
+
+1.3
+date	2015.04.10.00.45.26;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.10.12.01.53.00;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2012.10.10.01.32.37;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@#ifndef __LYUTILS_H__
+#define __LYUTILS_H__
+
+// Lex and Yacc interface utility.
+
+#include <stdio.h>
+
+#include "astree.h"
+#include "auxlib.h"
+
+#define YYEOF 0
+
+extern FILE* yyin;
+extern astree* yyparse_astree;
+extern int yyin_linenr;
+extern char* yytext;
+extern int yy_flex_debug;
+extern int yydebug;
+extern int yyleng;
+
+int yylex (void);
+int yyparse (void);
+void yyerror (const char* message);
+int yylex_destroy (void);
+const char* get_yytname (int symbol);
+bool is_defined_token (int symbol);
+
+const string* lexer_filename (int filenr);
+void lexer_newfilename (const char* filename);
+void lexer_badchar (unsigned char bad);
+void lexer_badtoken (char* lexeme);
+void lexer_newline (void);
+void lexer_setecho (bool echoflag);
+void lexer_useraction (void);
+
+astree* new_parseroot (void);
+int yylval_token (int symbol);
+
+void lexer_include (void);
+
+typedef astree* astree_pointer;
+#define YYSTYPE astree_pointer
+#include "yyparse.h"
+
+RCSH("$Id: lyutils.h,v 1.2 2013-10-11 18:53:00-07 - - $")
+#endif
+@
+
+
+1.2
+log
+@-
+@
+text
+@d28 7
+a34 7
+const string* scanner_filename (int filenr);
+void scanner_newfilename (const char* filename);
+void scanner_badchar (unsigned char bad);
+void scanner_badtoken (char* lexeme);
+void scanner_newline (void);
+void scanner_setecho (bool echoflag);
+void scanner_useraction (void);
+d39 1
+a39 1
+void scanner_include (void);
+d45 1
+a45 1
+RCSH("$Id: lyutils.h,v 1.4 2013-09-23 14:27:15-07 - - $")
+@
+
+
+1.1
+log
+@-
+@
+text
+@d13 2
+a14 2
+extern FILE *yyin;
+extern astree yyparse_astree;
+d16 1
+a16 1
+extern char *yytext;
+d23 4
+a26 2
+void yyerror (char *message);
+const char *get_yytname (int symbol);
+d28 2
+a29 2
+char *scanner_filename (int filenr);
+void scanner_newfilename (char *filename);
+d31 1
+a31 1
+void scanner_badtoken (char *lexeme);
+d36 1
+a36 1
+astree new_parseroot (void);
+d41 2
+a42 1
+#define YYSTYPE astree
+d45 1
+a45 2
+// LINTED(static unused)
+RCSH(LYUTILS_H,"$Id: lyutils.h,v 1.9 2011-10-06 22:05:30-07 - - $")
+@

@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2012.10.10.01.28.08;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mk.asg2-code,v 1.1 2012-10-09 18:23:16-07 - - $
+mkpspdf ../asg2-scanner-code.ps \
+astree.h astree.rep.h auxlib.h lyutils.h parser.h \
+astree.c auxlib.c lyutils.c parser.y
+@

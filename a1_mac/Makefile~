@@ -1,0 +1,7 @@
+CC = g++ -g -O0 -Wall -Wextra -std=gnu++11 
+SOURCES = oc.cpp auxlib.cpp stringset.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = oc
+
+oc : $(OBJECTS)
+   $(CC) $(OBJECTS) -o oc

@@ -1,0 +1,59 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2013.09.21.02.41.09;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.09.21.02.38.26;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: morecat,v 1.1 2013-09-20 19:38:26-07 - - $
+#
+# Concatenate multiple short files into a longer file with
+# headers like more but use cat -nv for line numbers.
+#
+
+for file in $*
+do
+   echo ::::::::::::::::
+   echo $file
+   echo ::::::::::::::::
+   cat -nv $file
+done
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+a7 2
+LISTFILE=$1
+shift
+d14 1
+a14 1
+done >$LISTFILE
+@

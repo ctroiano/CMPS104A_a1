@@ -1,0 +1,16 @@
+stringset[   0]:   11413460447292444913 0x7f89a8e00010->"1"
+                    3921070133133083874 0x7f89a8e00220->"adsfadsafdsafds"
+stringset[   2]:   13397827012410270983 0x7f89a8e00130->"320"
+stringset[   5]:   11275350073939794026 0x7f89a8e00100->"3"
+                   12238967215805222738 0x7f89a8e000d0->"line>""
+stringset[   7]:    3949631161344206458 0x7f89a8e002a0->"fdsafdas"
+stringset[   8]:   14272438240131341626 0x7f89a8e00160->""<command"
+stringset[   9]:   14194718514749756805 0x7f89a8e000a0->""<built-in>""
+stringset[  13]:   17472595041006102391 0x7f89a8e001f0->"2"
+stringset[  15]:   11579496588588260692 0x7f89a8e002d0->"fdd"
+                   16107259135890128643 0x7f89a8e00070->""/Users/Chris/Desktop/kk.oc""
+stringset[  16]:    6839202656113135030 0x7f89a8e00270->"fdsafdasfd"
+stringset[  19]:    8855829328138499745 0x7f89a8e003c0->"ss"
+load_factor = 0.565
+bucket_count = 23
+max_bucket_size = 2

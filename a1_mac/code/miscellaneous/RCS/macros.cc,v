@@ -1,0 +1,87 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.3
+date	2013.09.25.01.54.47;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.09.25.01.53.49;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.09.25.01.52.29;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@// $Id: macros.cc,v 1.2 2013-09-24 18:53:49-07 - - $
+
+#include <assert.h>
+#include <stdio.h>
+
+#define PRINT(FMT,ITEM) \
+        printf ("%-3s %-16s = \"" FMT "\"\n", FMT, #ITEM, ITEM);
+
+int main (int argc, char **argv) {
+   PRINT ("%s", argv[0]);
+   PRINT ("%s", __FILE__);
+   PRINT ("%d", __LINE__);
+   PRINT ("%s", __func__);
+   PRINT ("%s", __DATE__);
+   PRINT ("%s", __TIME__);
+   PRINT ("%d", __STDC__);
+   #ifdef __STDC_VERSION__
+   PRINT ("%ld", __STDC_VERSION__);
+   #endif
+   #ifdef __cplusplus
+   PRINT ("%ld", __cplusplus);
+   #endif
+   return 0;
+}
+
+//TEST// ./macros >macros.lis 2>&1
+//TEST// mkpspdf macros.ps macros.cc* macros.lis
+
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: macros.cc,v 1.1 2013-09-24 18:52:29-07 - - $
+d17 1
+d19 2
+d22 1
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: macros.c,v 1.9 2011-09-23 19:19:40-07 - - $
+d18 1
+@

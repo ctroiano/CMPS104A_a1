@@ -1,0 +1,17 @@
+intern(foo) returned 0x4c30598->"foo"
+intern(foo) returned 0x4c30598->"foo"
+intern(foo) returned 0x4c30598->"foo"
+intern(foo) returned 0x4c30598->"foo"
+intern(bar) returned 0x4c30778->"bar"
+intern(bar) returned 0x4c30778->"bar"
+intern(bar) returned 0x4c30778->"bar"
+intern(foo) returned 0x4c30598->"foo"
+intern(qux) returned 0x4c30958->"qux"
+intern(baz) returned 0x4c30a18->"baz"
+stringset[   0]:    9631199822919835226: 0x4c30598->"foo"
+stringset[   7]:    8658707281607720454: 0x4c30958->"qux"
+stringset[   9]:   11474628671133349555: 0x4c30778->"bar"
+stringset[  10]:   12938591777111562088: 0x4c30a18->"baz"
+load_factor = 0.364
+bucket_count = 11
+max_bucket_size = 1

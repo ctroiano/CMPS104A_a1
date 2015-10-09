@@ -1,0 +1,107 @@
+head	1.4;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.4
+date	2014.11.21.00.14.03;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2014.11.21.00.13.19;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2014.11.21.00.12.38;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2014.11.21.00.12.24;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@-
+@
+text
+@// $Id: findmap.cpp,v 1.3 2014-11-20 16:13:19-08 - - $
+
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+int main() {
+   unordered_map<string,int> um;
+   for (const string& s: vector<string> {"foo", "bar", "baz"}) {
+      const auto& e = um.find (s);
+      cout << s << ": ";
+      if (e == um.end()) cout << "not found";
+                    else cout << e->second;
+      cout << endl;
+   }
+   int i{};
+   for (const string& s: vector<string> {"foo", "bar", "baz"}) {
+      um.insert ({s, ++i});
+   }
+   for (const auto& i: um) {
+      cout << i.first << ": " << i.second << endl;
+   }
+   return 0;
+}
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: findmap.cpp,v 1.2 2014-11-20 16:12:38-08 - - $
+d13 4
+a16 2
+      cout << s << ": "
+           << (e == um.end() ? "not found" : e->second) << endl;
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: findmap.cpp,v 1.1 2014-11-20 16:12:24-08 - - $
+d14 1
+a14 1
+           << (e == um.end() ? "not found" : e.second) << endl;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: insertmap.cpp,v 1.4 2014-11-20 16:01:18-08 - - $
+d14 1
+a14 1
+           << (e == um.end() ? "not found" : e.second()) << endl;
+@

@@ -1,0 +1,76 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.3
+date	2013.09.20.01.03.21;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2011.09.30.02.06.34;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2011.09.01.02.16.36;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@line 1// $Id: foo.oc,v 1.2 2011-09-29 19:06:34-07 - - $
+__FILE__ __LINE__ __DATE__ __TIME__
+foo.oc, line 3.
+#include "foo1.oh"
+foo.oc, line 5.
+#include "foo2.oh"
+/* Comment */ on line 7
+FOO1 + FOO2;
+foo.oc, line 9, last line.
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: foo.oc,v 1.1 2011-08-31 19:16:36-07 - - $
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: foo.oc,v 1.3 2011-08-31 18:47:08-07 - - $
+d3 1
+a3 1
+foo.oc, line 2.
+d5 1
+a5 1
+foo.oc, line 4.
+d7 1
+a7 1
+/* Comment */ on line 6
+d9 1
+a9 1
+foo.oc, line 8, last line.
+@

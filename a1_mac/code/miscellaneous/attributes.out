@@ -1,0 +1,9 @@
+Number of bits in a bitset = 64
+bitset 0x000000000000000F = void bool char int
+bitset 0x00000000000000F0 = null string struct array
+bitset 0x0000000000000F00 = function variable field typeid
+bitset 0x000000000000F000 = param lvalue const vreg
+bitset 0x00000000000F0000 = vaddr
+bitset 0x0000000000F00000 =
+bitset 0x000000000F000000 =
+bitset 0x00000000F0000000 =

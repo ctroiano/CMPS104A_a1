@@ -1,0 +1,394 @@
+head	1.6;
+access;
+symbols;
+locks;
+comment	@ * @;
+
+
+1.6
+date	2011.10.07.05.18.35;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2011.10.07.05.17.56;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2011.10.04.23.19.32;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2011.09.23.01.16.38;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2011.09.23.01.12.57;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2011.09.01.02.28.12;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@-
+@
+text
+@%{
+// Dummy parser for scanner project.
+%}
+
+%debug
+%defines
+%error-verbose
+%token-table
+
+%token TOK_VOID TOK_BOOL TOK_CHAR TOK_INT TOK_STRING
+%token TOK_IF TOK_ELSE TOK_WHILE TOK_RETURN TOK_STRUCT
+%token TOK_FALSE TOK_TRUE TOK_NULL TOK_NEW TOK_ARRAY
+%token TOK_EQ TOK_NE TOK_LT TOK_LE TOK_GT TOK_GE
+%token TOK_IDENT TOK_INTCON TOK_CHARCON TOK_STRINGCON
+
+%token TOK_BLOCK TOK_CALL TOK_IFELSE TOK_INITDECL
+%token TOK_POS TOK_NEG TOK_NEWARRAY TOK_TYPEID TOK_FIELD
+
+%start program
+
+%%
+
+program : program token | ;
+token   : '(' | ')' | '[' | ']' | '{' | '}' | ';' | ',' | '.'
+        | '=' | '+' | '-' | '*' | '/' | '%' | '!'
+        | TOK_VOID | TOK_BOOL | TOK_CHAR | TOK_INT | TOK_STRING
+        | TOK_IF | TOK_ELSE | TOK_WHILE | TOK_RETURN | TOK_STRUCT
+        | TOK_FALSE | TOK_TRUE | TOK_NULL | TOK_NEW | TOK_ARRAY
+        | TOK_EQ | TOK_NE | TOK_LT | TOK_LE | TOK_GT | TOK_GE
+        | TOK_IDENT | TOK_INTCON | TOK_CHARCON | TOK_STRINGCON
+        ;
+
+%%
+
+const char *get_yytname (int symbol) {
+   return yytname [YYTRANSLATE (symbol)];
+}
+
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 29
+
+// $Id: parser.y,v 1.4 2011-10-04 16:19:32-07 - - $
+//
+// Prototype parser for oc for use in assignment 2 (the scanner).
+//
+// To use this file, copy it into your directory then translate it
+// into C with the command:
+//
+//    bison -dtv parser.y -o parser.c
+//
+// Generated files are:
+//
+//    parser.h - a header file containing the #define symbols that
+//       you need to use with your scanner.  Note that this file must
+//       be included AFTER the file typedefing YYSTYPE.
+//
+//    parser.c - a parser for the grammar, which you will not really
+//       want to examine in a lot of detail and should be treated as
+//       a machine code file.  This will need to be linked into your
+//       code.
+//
+// In project 3, you will discard this file and replace it with the
+// parser that you write.
+//
+//
+
+int yylex (void);
+void yyerror (char*);
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d3 1
+a3 1
+// $Id: parser.y,v 1.3 2011-09-22 18:16:38-07 - - $
+d38 8
+a45 34
+%token TOK_ARRAY
+%token TOK_BLOCK
+%token TOK_BOOL
+%token TOK_CALL
+%token TOK_CHAR
+%token TOK_CHARCON
+%token TOK_ELSE
+%token TOK_EQ
+%token TOK_FALSE
+%token TOK_FIELD
+%token TOK_GE
+%token TOK_GT
+%token TOK_IDENT
+%token TOK_IF
+%token TOK_IFELSE
+%token TOK_INITDECL
+%token TOK_INT
+%token TOK_INTCON
+%token TOK_LE
+%token TOK_LT
+%token TOK_NE
+%token TOK_NEG
+%token TOK_NEW
+%token TOK_NEWARRAY
+%token TOK_NULL
+%token TOK_POS
+%token TOK_RETURN
+%token TOK_STRING
+%token TOK_STRINGCON
+%token TOK_STRUCT
+%token TOK_TRUE
+%token TOK_TYPEID
+%token TOK_VOID
+%token TOK_WHILE
+d51 8
+a58 54
+program : program token
+        |
+        ;
+
+token   : '!'
+        | '%'
+        | '('
+        | ')'
+        | '*'
+        | '+'
+        | ','
+        | '-'
+        | '.'
+        | '/'
+        | ';'
+        | '='
+        | '['
+        | ']'
+        | '{'
+        | '}'
+        | TOK_ARRAY
+        | TOK_BLOCK
+        | TOK_BOOL
+        | TOK_CALL
+        | TOK_CHAR
+        | TOK_CHARCON
+        | TOK_ELSE
+        | TOK_EQ
+        | TOK_FALSE
+        | TOK_FIELD
+        | TOK_GE
+        | TOK_GT
+        | TOK_IDENT
+        | TOK_IF
+        | TOK_IFELSE
+        | TOK_INITDECL
+        | TOK_INT
+        | TOK_INTCON
+        | TOK_LE
+        | TOK_LT
+        | TOK_NE
+        | TOK_NEG
+        | TOK_NEW
+        | TOK_NEWARRAY
+        | TOK_NULL
+        | TOK_POS
+        | TOK_RETURN
+        | TOK_STRING
+        | TOK_STRINGCON
+        | TOK_STRUCT
+        | TOK_TRUE
+        | TOK_TYPEID
+        | TOK_VOID
+        | TOK_WHILE
+@
+
+
+1.3
+log
+@-
+@
+text
+@d3 1
+a3 1
+// $Id: parser.y,v 1.2 2011-09-22 18:12:57-07 - - $
+d5 1
+a5 1
+// Prototype parser for c0 for use in assignment 2 (the scanner).
+d33 39
+a71 6
+%token TOK_IDENT TOK_CHARCON TOK_INTCON TOK_STRINGCON
+%token TOK_WHILE TOK_IF TOK_ELSE TOK_RETURN
+%token TOK_VOID TOK_BOOL TOK_CHAR TOK_INT TOK_REFERENCE
+%token TOK_EQ TOK_NE TOK_GT TOK_GE TOK_LT TOK_LE
+%token TOK_FALSE TOK_TRUE TOK_NULL TOK_POS TOK_NEG TOK_NEW
+%token TOK_TYPEID TOK_INITDECL TOK_EXTERN TOK_ARRAY TOK_STRUCT
+d81 21
+a101 1
+token   : TOK_IDENT
+a102 4
+        | TOK_INTCON
+        | TOK_STRINGCON
+        | TOK_WHILE
+        | TOK_IF
+a103 6
+        | TOK_RETURN
+        | TOK_VOID
+        | TOK_BOOL
+        | TOK_CHAR
+        | TOK_INT
+        | TOK_REFERENCE
+d105 3
+a107 1
+        | TOK_NE
+d109 7
+a115 1
+        | TOK_GE
+d117 4
+a120 3
+        | TOK_LE
+        | TOK_FALSE
+        | TOK_TRUE
+d123 5
+a127 2
+        | TOK_NEG
+        | TOK_NEW
+d129 2
+a130 19
+        | TOK_INITDECL
+        | TOK_EXTERN
+        | TOK_ARRAY
+        | TOK_STRUCT
+        | '('
+        | ')'
+        | '['
+        | ']'
+        | '{'
+        | '}'
+        | ';'
+        | ','
+        | '='
+        | '+'
+        | '-'
+        | '*'
+        | '/'
+        | '%'
+        | '!'
+a132 1
+
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+/* $Id: parser.y,v 1.1 2011-08-31 19:28:12-07 - - $
+d3 29
+a31 23
+/*
+* Prototype parser for c0 for use in assignment 2 (the scanner).
+*
+* To use this file, copy it into your directory then translate it
+* into C with the command:
+*
+*    bison -dtv parser.y -o parser.c
+*
+* Generated files are:
+*
+*    parser.h - a header file containing the #define symbols that
+*       you need to use with your scanner.  Note that this file must
+*       be included AFTER the file typedefing YYSTYPE.
+*
+*    parser.c - a parser for the grammar, which you will not really
+*       want to examine in a lot of detail and should be treated as
+*       a machine code file.  This will need to be linked into your
+*       code.
+*
+* In project 3, you will discard this file and replace it with the
+* parser that you write.
+*
+*/
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+/* $Id: parser.y,v 1.1 2009-10-08 16:41:39-07 - - $
+d27 6
+a32 7
+%token  TOK_IDENT
+%token  TOK_LIT_CHAR TOK_LIT_INT TOK_LIT_STRING
+%token  TOK_WHILE_KW TOK_IF_KW TOK_ELSE_KW TOK_RETURN_KW TOK_NEW_KW
+%token  TOK_VOID_KW TOK_BOOL_KW TOK_CHAR_KW TOK_INT_KW
+%token  TOK_STRUCT_KW TOK_STRING_KW TOK_UNCHECKED_TYPE_KW
+%token  TOK_FALSE_KW TOK_TRUE_KW TOK_NULL_KW
+%token  TOK_EQ TOK_NE TOK_GT TOK_GE TOK_LT TOK_LE
+d43 29
+a71 19
+        | TOK_LIT_CHAR
+        | TOK_LIT_INT
+        | TOK_LIT_STRING
+        | TOK_CHAR_KW
+        | TOK_WHILE_KW
+        | TOK_IF_KW
+        | TOK_ELSE_KW
+        | TOK_RETURN_KW
+        | TOK_NEW_KW
+        | TOK_VOID_KW
+        | TOK_BOOL_KW
+        | TOK_CHAR_KW
+        | TOK_INT_KW
+        | TOK_STRUCT_KW
+        | TOK_STRING_KW
+        | TOK_UNCHECKED_TYPE_KW
+        | TOK_FALSE_KW
+        | TOK_TRUE_KW
+        | TOK_NULL_KW
+a77 1
+        | ':'
+a80 6
+        | TOK_EQ
+        | TOK_NE
+        | TOK_GT
+        | TOK_GE
+        | TOK_LT
+        | TOK_LE
+a85 1
+        | '.'
+a86 1
+        | '@@'
+d89 1
+@
